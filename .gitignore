@@ -1,0 +1,35 @@
+# Ignore the compiled executable
+collatz
+
+# Ignore object files
+*.o
+
+# Ignore debug files
+*.dSYM
+
+# Ignore temporary files
+*~
+
+# Ignore backup files
+*.bak
+
+# Ignore log files
+*.log
+
+# Ignore any core dump files
+core*
+
+# Ignore any compiled binary files or executables
+*.exe
+*.out
+*.app
+
+# Ignore any configuration files
+*.cfg
+*.config
+
+# Ignore MacOS specific files
+.DS_Store
+
+# Ignore Visual Studio Code settings and workspace files
+.vscode/
