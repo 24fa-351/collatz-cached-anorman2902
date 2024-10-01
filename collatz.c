@@ -20,7 +20,7 @@ typedef struct Cache {
     int max_size;
 } Cache;
 
-// Function declarations
+// declarations
 int calculate_collatz_steps(int starting_number);
 int get_steps_with_cache(Cache *cache, int number, int (*eviction_policy)(Cache *), int *cache_hit);
 Cache *create_cache(int max_size);
@@ -50,13 +50,12 @@ int main(int argc, char *argv[]) {
     if (sscanf(argv[1], "%d", &number_of_tests) != 1 ||
         sscanf(argv[2], "%d", &min_value) != 1 ||
         sscanf(argv[3], "%d", &max_value) != 1 ||
-        sscanf(argv[5], "%d", &cache_size) != 1 ||
-        sscanf(argv[4], "%s", cache_policy) != 1) {
+        sscanf(argv[4], "%s", cache_policy) != 1 ||
+        sscanf(argv[5], "%d", &cache_size) != 1) {
         fprintf(stderr, "Error: Invalid input format. Please provide integers for N, MIN, MAX, a string for CACHE_POLICY, and CACHE_SIZE.\n");
         return 1;
     }
 
-    // Validating input values
     if (number_of_tests <= 0 || min_value < MIN_RANDOM_VALUE || max_value <= min_value) {
         fprintf(stderr, "Error: Invalid values. Ensure N > 0, MIN >= %d, and MAX > MIN.\n", MIN_RANDOM_VALUE);
         return 1;
@@ -78,7 +77,6 @@ int main(int argc, char *argv[]) {
     Cache *cache = create_cache(cache_size);
     int total_cache_hits = 0;
 
-    // For loop set up to output in the form of a data table
     printf("%15s %10s %10s\n", "Random Number", "Steps", "Cache Hit");
     printf("%15s %10s %10s\n", "-------------", "------", "---------");
 
@@ -153,6 +151,7 @@ int fifo_eviction(Cache *cache) {
     return 0;
 }
 
+// Not currently working, NOT part of CWID requirement
 int random_eviction(Cache *cache) {
     if (cache->size == 0) {
         return 0;
